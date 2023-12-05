@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <div id="nav">
+
+    </div>
+    <div id="container"></div>
+</body>
+
+</html>
+
+<script type="module">
+import navbar from './components/navbar.js'
+document.getElementById('nav').innerHTML=navbar()
+
+import {getData,append} from './scripts/showData.js'
+let response= getData(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+
+    response.then((res)=>{
+        let container=document.getElementById('container')
+        console.log(res.categories)
+        append(res.categories,container)
+
+    })
+
+</script>

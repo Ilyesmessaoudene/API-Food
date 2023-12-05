@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<style>
+
+
+</style>
+
+<body>
+    <div id="nav">
+    </div>
+    <h2 id="rName"></h2>
+    <div id="details">
+        <img id="rimg" src="" alt="">
+
+        <p id="ins"></p>
+    </div>
+
+
+
+</body>
+
+</html>
+
+<script type="module">
+    import navbar from './components/navbar.js'
+    document.getElementById('nav').innerHTML = navbar()
+
+    let recipeDetail = JSON.parse(localStorage.getItem('mealDetail'))
+    console.log(recipeDetail)
+
+    import {getData,append,showDetails} from './scripts/showData.js'
+    showDetails(recipeDetail)
+
+    
+</script>

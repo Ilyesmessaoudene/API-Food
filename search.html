@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+ 
+</head>
+
+<body>
+    <div id="nav">
+    </div>
+
+    <div id="box2">
+        <input id="searchInput" type="text">
+        <button id="searchbtn">search</button>
+    </div>
+    <div id='container'>
+
+    </div>
+</body>
+
+</html>
+
+<script type="module">
+    import navbar from './components/navbar.js'
+    document.getElementById('nav').innerHTML = navbar()
+
+
+    import { getData, append } from './scripts/showData.js'
+    let searchbtn = document.getElementById('searchbtn')
+
+    searchbtn.addEventListener('click', () => {
+
+        let input = document.getElementById('searchInput').value
+        console.log(input)
+        let response = getData(`https://themealdb.com/api/json/v1/1/search.php?s=${input}`)
+        response.then((res) => {
+            let container = document.getElementById('container')
+            append(res.meals, container)
+
+        })
+    })
+
+
+
+</script>
+<script>
+
+</script>
